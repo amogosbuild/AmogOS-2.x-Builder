@@ -1,0 +1,15 @@
+{
+  "KPackageStructure": "Plasma/LookAndFeel",
+  "KPlugin": {
+    "Id": "org.amogos.desktop",
+    "Name": "AmogOS 2 Pro",
+    "Description": "AmogOS desktop defaults, Amogus menu and numbered wallpaper",
+    "License": "GPL-2.0-or-later",
+    "Version": "1.0",
+    "Authors": [
+      {
+        "Name": "AmogOS"
+      }
+    ]
+  }
+}

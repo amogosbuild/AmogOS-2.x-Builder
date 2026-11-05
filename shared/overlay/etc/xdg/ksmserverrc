@@ -1,0 +1,3 @@
+# Start a clean desktop instead of restoring background applications from the last session.
+[General]
+loginMode=emptySession

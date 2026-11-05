@@ -1,0 +1,12 @@
+# Calamares is offered as the fallback only while its live-session launcher exists.
+[Desktop Entry]
+Type=Application
+Name=Fallback Installer
+GenericName=Calamares Installer
+Comment=Install AmogOS 2 Pro using Calamares
+Exec=/usr/local/bin/amogos-calamares-fallback
+TryExec=/run/amogos-live/calamares-fallback
+Icon=calamares
+Terminal=false
+Categories=System;
+StartupWMClass=calamares

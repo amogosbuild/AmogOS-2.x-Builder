@@ -1,0 +1,3 @@
+# Keep background file indexing off by default; it can be enabled in Plasma File Search settings.
+[Basic Settings]
+Indexing-Enabled=false

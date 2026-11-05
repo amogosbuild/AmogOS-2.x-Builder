@@ -1,0 +1,3 @@
+# Fast gzip avoids the large memory and CPU spikes of extreme XZ during installation and updates.
+COMPRESS=gzip
+COMPRESSLEVEL=1

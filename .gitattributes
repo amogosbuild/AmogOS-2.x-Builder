@@ -1,0 +1,4 @@
+# Linux build inputs retain LF endings regardless of the checkout platform.
+* text=auto eol=lf
+*.png binary
+*.gpg binary

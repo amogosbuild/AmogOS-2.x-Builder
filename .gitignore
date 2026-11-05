@@ -1,0 +1,7 @@
+# Generated build trees and local editor files are not distribution sources.
+.work/
+out/
+__pycache__/
+*.pyc
+.idea/
+.vscode/

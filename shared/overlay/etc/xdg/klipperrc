@@ -1,0 +1,4 @@
+# Keep clipboard history bounded and avoid retaining decoded images in its history.
+[General]
+MaxClipItems=10
+IgnoreImages=true

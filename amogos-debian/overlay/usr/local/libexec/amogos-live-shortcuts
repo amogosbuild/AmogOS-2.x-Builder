@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+grep -qw 'boot=live' /proc/cmdline
+test -r /run/live/medium/live/filesystem.squashfs
+install -d -m755 /run/amogos-live
+ln -sfn /usr/local/bin/amogos-calamares-fallback /run/amogos-live/calamares-fallback
+desktop="$(getent passwd user | cut -d: -f6)/Desktop"
+test "$desktop" = /home/user/Desktop
+install -d -m755 -o user -g user "$desktop"
+install -m755 -o user -g user /usr/share/applications/amogos-calamares-fallback.desktop "$desktop/amogos-calamares-fallback.desktop"

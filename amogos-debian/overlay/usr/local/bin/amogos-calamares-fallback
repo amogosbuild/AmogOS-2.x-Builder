@@ -1,0 +1,6 @@
+#!/bin/sh
+if ! grep -qw 'boot=live' /proc/cmdline || ! test -r /run/live/medium/live/filesystem.squashfs; then
+    printf '%s\n' 'The fallback installer is available only in the AmogOS live session.' >&2
+    exit 1
+fi
+exec /usr/bin/calamares-install-debian "$@"

@@ -1,0 +1,14 @@
+# Create live-only launchers after the live account is ready and before the desktop starts.
+[Unit]
+Description=AmogOS live-session fallback installer shortcut
+ConditionKernelCommandLine=boot=live
+After=live-config.service
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/amogos-live-shortcuts
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

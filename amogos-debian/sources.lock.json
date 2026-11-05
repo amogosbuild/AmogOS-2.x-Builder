@@ -1,0 +1,63 @@
+{
+  "repository": "https://github.com/amogosbuild/amogosbuild.github.io.git",
+  "commit": "64502c28fea02399e5f92e07ad113b652a65c5d7",
+  "keyringSha256": "ecd8853cabeef51a95689dadbd5934ecc6916f00c1fd72dab032c78a737f0240",
+  "packages": [
+    {
+      "package": "amogos-archive-keyring",
+      "version": "2.0.0-1",
+      "architecture": "all",
+      "filename": "pool/main/a/amogos-archive-keyring/amogos-archive-keyring_2.0.0-1_all.deb",
+      "bytes": 1228,
+      "sha256": "4897fcf13828e666095d502eadb0f73975efc0c7d751764625623e32d00a703d"
+    },
+    {
+      "package": "amogos-installer",
+      "version": "0.1.6",
+      "architecture": "amd64",
+      "filename": "pool/main/a/amogos-installer/amogos-installer_0.1.6_amd64.deb",
+      "bytes": 7966100,
+      "sha256": "8fbd4616ad5ac5277d66493d14d18b0d9585bfd65efc3d9e706e2ae7d247436a"
+    },
+    {
+      "package": "amogos-music",
+      "version": "1.0.20~alpha2022",
+      "architecture": "amd64",
+      "filename": "pool/main/a/amogos-music/amogos-music_1.0.20~alpha2022_amd64.deb",
+      "bytes": 8699700,
+      "sha256": "ef7e412e1d8ecdfef6e1a675b9e9ec5608c7a3200ce8dc3134f03d5875f11a2b"
+    },
+    {
+      "package": "amogos-notes",
+      "version": "1.0.0-3",
+      "architecture": "amd64",
+      "filename": "pool/main/a/amogos-notes/amogos-notes_1.0.0-3_amd64.deb",
+      "bytes": 7149392,
+      "sha256": "837cb041916c81b3d095be2309834ca5f80dee9082b27490c67c45923df4d5ab"
+    },
+    {
+      "package": "amogos-store",
+      "version": "0.1.6",
+      "architecture": "amd64",
+      "filename": "pool/main/a/amogos-store/amogos-store_0.1.6_amd64.deb",
+      "bytes": 8395512,
+      "sha256": "09b78fc651be248a56fda91de16d33720ef318839ca848640e4b27f5aed4270f"
+    },
+    {
+      "package": "amogos-system",
+      "version": "2.1.0-2",
+      "architecture": "all",
+      "filename": "pool/main/a/amogos-system/amogos-system_2.1.0-2_all.deb",
+      "bytes": 33108,
+      "sha256": "e764f43fc6071ecea0771bc937e828d31f1940bfa32874aa756f79a99efa1d6b"
+    },
+    {
+      "package": "amogos-update",
+      "version": "2.1.0-3",
+      "architecture": "all",
+      "filename": "pool/main/a/amogos-update/amogos-update_2.1.0-3_all.deb",
+      "bytes": 3226,
+      "sha256": "af096dd7bfa5dde670f95776258c641c91ee062611e6b2c82d55007c4a07185d"
+    }
+  ]
+}

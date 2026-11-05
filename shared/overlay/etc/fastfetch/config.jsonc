@@ -1,0 +1,11 @@
+// Display the supplied AmogOS logo with the standard Fastfetch modules.
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "auto",
+        "source": "/usr/share/fastfetch/distro-logo.txt"
+    },
+    "modules": [
+        "title", "separator", "os", "host", "kernel", "uptime", "packages", "shell", "display", "de", "wm", "terminal", "cpu", "gpu", "memory", "break", "colors"
+    ]
+}

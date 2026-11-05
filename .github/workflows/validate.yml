@@ -1,0 +1,16 @@
+# Validate the build configuration and source policy on every proposed change.
+name: Validate builder
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Check source and profiles
+        run: python3 builder/cli.py --check
+      - name: Check shell syntax
+        run: bash -n build.sh
+      - name: Run builder boundary tests
+        run: python3 -m unittest discover -s tests -v

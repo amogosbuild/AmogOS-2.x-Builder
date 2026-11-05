@@ -1,0 +1,6 @@
+# Avoid expensive blur and decorative effects on low-memory hardware.
+[Plugins]
+blurEnabled=false
+contrastEnabled=false
+wobblywindowsEnabled=false
+magiclampEnabled=false
