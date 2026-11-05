@@ -78,6 +78,9 @@ Debian repositories supply current Debian 13 package versions, so these are fres
 2.1 images, not byte-identical reproductions of an older published ISO. Each build
 records its installed package inventory and source revision. Edit the lock and
 package lists deliberately when updating the distribution.
+Build-only APT preferences keep the locked AmogOS versions fixed while Debian
+packages receive a full upgrade. Those preferences are removed before packing,
+so installed systems continue receiving normal AmogOS updates.
 
 ## Development checks
 

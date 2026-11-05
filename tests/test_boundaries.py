@@ -61,17 +61,19 @@ class BoundaryTests(unittest.TestCase):
     def test_finalization_discards_build_time_machine_identifiers(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=pathlib.Path(temporary)
-            for name in ('etc','var/lib/dbus','var/lib/systemd'):
+            for name in ('etc/apt/preferences.d','var/lib/dbus','var/lib/systemd'):
                 (root/name).mkdir(parents=True,exist_ok=True)
             (root/'etc/machine-id').write_text('build-id')
             (root/'var/lib/dbus/machine-id').write_text('build-id')
             (root/'var/lib/systemd/random-seed').write_bytes(b'build-seed')
+            (root/'etc/apt/preferences.d/amogos-build-lock').write_text('build pin')
             with patch('debian_configure.chroot'):
                 finalize(root)
             self.assertEqual((root/'etc/machine-id').read_text(),'')
             self.assertTrue((root/'var/lib/dbus/machine-id').is_symlink())
             self.assertEqual(str((root/'var/lib/dbus/machine-id').readlink()),'/etc/machine-id')
             self.assertFalse((root/'var/lib/systemd/random-seed').exists())
+            self.assertFalse((root/'etc/apt/preferences.d/amogos-build-lock').exists())
 
 
 if __name__=='__main__':

@@ -4,6 +4,8 @@ from common import chroot,write
 
 
 def install(repository,root,archive,lock):
+    preferences='# Keep application versions fixed only while assembling the image.\n'+''.join('Package: '+package['package']+'\nPin: version '+package['version']+'\nPin-Priority: 1001\n\n' for package in lock['packages'])
+    write(root,'etc/apt/preferences.d/amogos-build-lock',preferences)
     staging=root/'var/tmp/amogos-packages'
     staging.mkdir()
     for package in lock['packages']:
@@ -18,6 +20,7 @@ def install(repository,root,archive,lock):
         names.extend(line for line in (repository/'amogos-debian/packages'/filename).read_text().splitlines() if line and not line.startswith('#'))
     packages=['/var/tmp/amogos-packages/'+package['filename'].rsplit('/',1)[-1] for package in lock['packages'] if package['package']!='amogos-archive-keyring']
     chroot(root,['apt-get','install','-y','--no-remove','--no-install-recommends',*names,*packages])
+    chroot(root,['apt-get','full-upgrade','-y','--no-remove'])
     chroot(root,['apt-mark','manual','linux-image-amd64','linux-headers-amd64','amogos-update','amogos-system','amogos-store','steam-installer','steam-devices'])
     for package in lock['packages']:
         actual=chroot(root,['dpkg-query','-W','-f=${Version}',package['package']],text=True,stdout=-1).stdout.strip()

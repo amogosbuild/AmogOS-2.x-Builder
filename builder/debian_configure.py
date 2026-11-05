@@ -51,7 +51,7 @@ def finalize(root):
     chroot(root,['systemd-hwdb','update'])
     chroot(root,['journalctl','--update-catalog'])
     chroot(root,['ldconfig'])
-    for name in ('var/lib/dkms/mok.key','var/lib/dkms/mok.pub','var/cache/apt/pkgcache.bin','var/cache/apt/srcpkgcache.bin','var/lib/systemd/random-seed','root/.bash_history','usr/sbin/policy-rc.d'):
+    for name in ('var/lib/dkms/mok.key','var/lib/dkms/mok.pub','var/cache/apt/pkgcache.bin','var/cache/apt/srcpkgcache.bin','var/lib/systemd/random-seed','etc/apt/preferences.d/amogos-build-lock','root/.bash_history','usr/sbin/policy-rc.d'):
         (root/name).unlink(missing_ok=True)
     for path in (root/'etc/ssh').glob('ssh_host_*'):
         path.unlink()
