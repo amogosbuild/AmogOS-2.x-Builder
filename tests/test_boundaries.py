@@ -3,10 +3,12 @@ import pathlib
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/'builder'))
 from common import copy_tree,write
 from validate import check
+from debian_configure import finalize
 
 
 class BoundaryTests(unittest.TestCase):
@@ -55,6 +57,21 @@ class BoundaryTests(unittest.TestCase):
 
     def test_complete_repository_policy(self):
         check(pathlib.Path(__file__).resolve().parents[1])
+
+    def test_finalization_discards_build_time_machine_identifiers(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=pathlib.Path(temporary)
+            for name in ('etc','var/lib/dbus','var/lib/systemd'):
+                (root/name).mkdir(parents=True,exist_ok=True)
+            (root/'etc/machine-id').write_text('build-id')
+            (root/'var/lib/dbus/machine-id').write_text('build-id')
+            (root/'var/lib/systemd/random-seed').write_bytes(b'build-seed')
+            with patch('debian_configure.chroot'):
+                finalize(root)
+            self.assertEqual((root/'etc/machine-id').read_text(),'')
+            self.assertTrue((root/'var/lib/dbus/machine-id').is_symlink())
+            self.assertEqual(str((root/'var/lib/dbus/machine-id').readlink()),'/etc/machine-id')
+            self.assertFalse((root/'var/lib/systemd/random-seed').exists())
 
 
 if __name__=='__main__':

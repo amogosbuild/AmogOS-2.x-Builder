@@ -90,9 +90,9 @@ After building, verify the image contents and optionally boot all four
 firmware/media combinations with QEMU:
 
 ```bash
-python3 tools/verify_iso.py out/IMAGE.iso
+sudo python3 tools/verify_iso.py out/IMAGE.iso
 sudo apt install qemu-system-x86 ovmf
-python3 tools/boot_test.py out/IMAGE.iso
+sudo python3 tools/boot_test.py out/IMAGE.iso
 ```
 
 The boot tests use disposable software-emulated VMs without network access or

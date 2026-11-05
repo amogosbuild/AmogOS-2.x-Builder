@@ -51,10 +51,14 @@ def finalize(root):
     chroot(root,['systemd-hwdb','update'])
     chroot(root,['journalctl','--update-catalog'])
     chroot(root,['ldconfig'])
-    for name in ('var/lib/dkms/mok.key','var/lib/dkms/mok.pub','var/cache/apt/pkgcache.bin','var/cache/apt/srcpkgcache.bin','root/.bash_history','usr/sbin/policy-rc.d'):
+    for name in ('var/lib/dkms/mok.key','var/lib/dkms/mok.pub','var/cache/apt/pkgcache.bin','var/cache/apt/srcpkgcache.bin','var/lib/systemd/random-seed','root/.bash_history','usr/sbin/policy-rc.d'):
         (root/name).unlink(missing_ok=True)
     for path in (root/'etc/ssh').glob('ssh_host_*'):
         path.unlink()
     machine=root/'etc/machine-id'
     machine.unlink(missing_ok=True)
     machine.write_text('')
+    dbus=root/'var/lib/dbus/machine-id'
+    dbus.parent.mkdir(parents=True,exist_ok=True)
+    dbus.unlink(missing_ok=True)
+    dbus.symlink_to('/etc/machine-id')
