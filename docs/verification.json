@@ -1,0 +1,125 @@
+{
+  "verifiedDate": "2026-11-05",
+  "nativeBuildEnvironment": "Debian 13 x86_64",
+  "developmentImage": {
+    "contents": {
+      "passed": true,
+      "iso": "AmogOS-2.1-Pro-Debian-20261105T053453Z-613385.iso",
+      "sha256": "2695fb2bf2285015ebf4e804a8280ae952aa2a824565f07a3c252ae2ea7fa30a",
+      "root": "0:0:0755",
+      "biosAndUefiCatalog": true,
+      "amogosPackages": {
+        "amogos-archive-keyring": "2.0.0-1",
+        "amogos-installer": "0.1.6",
+        "amogos-music": "1.0.20~alpha2022",
+        "amogos-notes": "1.0.0-3",
+        "amogos-store": "0.1.6",
+        "amogos-system": "2.1.0-2",
+        "amogos-update": "2.1.0-3"
+      },
+      "offlineDriverArchives": 65,
+      "persistentDefaults": true,
+      "credits": true
+    },
+    "boot": [
+      {
+        "firmware": "bios",
+        "media": "cdrom",
+        "passed": true,
+        "rootGuardBeforeTmpfiles": true,
+        "milestone": "Started sddm.service - Simple Desktop Display Manager",
+        "seconds": 210.9
+      },
+      {
+        "firmware": "uefi",
+        "media": "cdrom",
+        "passed": true,
+        "rootGuardBeforeTmpfiles": true,
+        "milestone": "Started sddm.service - Simple Desktop Display Manager",
+        "seconds": 213.0
+      },
+      {
+        "firmware": "bios",
+        "media": "usb",
+        "passed": true,
+        "rootGuardBeforeTmpfiles": true,
+        "milestone": "Started sddm.service - Simple Desktop Display Manager",
+        "seconds": 217.9
+      },
+      {
+        "firmware": "uefi",
+        "media": "usb",
+        "passed": true,
+        "rootGuardBeforeTmpfiles": true,
+        "milestone": "Started sddm.service - Simple Desktop Display Manager",
+        "seconds": 203.9
+      }
+    ]
+  },
+  "cleanRerun": {
+    "manifest": {
+      "edition": "amogos-debian",
+      "osVersion": "2.1",
+      "iso": "AmogOS-2.1-Pro-Debian-20261105T054955Z-e9915a.iso",
+      "bytes": 2156781568,
+      "sha256": "cf3044a7db0aac286e2237699b3dd78ed71288eb88a833b20e19a6f81a8cbf71",
+      "kernel": "6.12.115+deb13.1-amd64",
+      "amogosSourceCommit": "64502c28fea02399e5f92e07ad113b652a65c5d7",
+      "amogosPackages": {
+        "amogos-archive-keyring": "2.0.0-1",
+        "amogos-installer": "0.1.6",
+        "amogos-music": "1.0.20~alpha2022",
+        "amogos-notes": "1.0.0-3",
+        "amogos-store": "0.1.6",
+        "amogos-system": "2.1.0-2",
+        "amogos-update": "2.1.0-3"
+      },
+      "root": "0:0:0755",
+      "compression": "zstd level 15, 256 KiB blocks"
+    },
+    "contents": {
+      "passed": true,
+      "iso": "AmogOS-2.1-Pro-Debian-20261105T054955Z-e9915a.iso",
+      "sha256": "cf3044a7db0aac286e2237699b3dd78ed71288eb88a833b20e19a6f81a8cbf71",
+      "root": "0:0:0755",
+      "biosAndUefiCatalog": true,
+      "amogosPackages": {
+        "amogos-archive-keyring": "2.0.0-1",
+        "amogos-installer": "0.1.6",
+        "amogos-music": "1.0.20~alpha2022",
+        "amogos-notes": "1.0.0-3",
+        "amogos-store": "0.1.6",
+        "amogos-system": "2.1.0-2",
+        "amogos-update": "2.1.0-3"
+      },
+      "offlineDriverArchives": 65,
+      "persistentDefaults": true,
+      "credits": true
+    }
+  },
+  "machineIdentityCleanup": {
+    "buildMachineIdentityRemoved": true,
+    "dbusIdentityLinkedToSystemIdentity": true,
+    "identityRegenerationVerified": true,
+    "randomSeedRemoved": true
+  },
+  "upgradePolicy": {
+    "realFullUpgradePassed": true,
+    "lockedVersionsRetained": true,
+    "buildPinsRemoved": true,
+    "dpkgAuditClean": true
+  },
+  "sourcePolicy": {
+    "maintainedFiles": 45,
+    "commentsPerFile": 1,
+    "boundaryTests": 5,
+    "arch": "reserved"
+  },
+  "scope": [
+    "Native Debian bootstrap and ISO assembly tested.",
+    "BIOS/UEFI CD-ROM and USB boots tested with QEMU software emulation.",
+    "Machine identity and build-pin cleanup tested separately on the real disposable filesystem and with a unit fixture.",
+    "Container entrypoint is provided; the container path was not exercised in this validation.",
+    "Physical hardware and complete target installation are outside these build/boot checks."
+  ]
+}

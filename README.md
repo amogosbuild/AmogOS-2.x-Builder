@@ -101,6 +101,8 @@ sudo python3 tools/boot_test.py out/IMAGE.iso
 The boot tests use disposable software-emulated VMs without network access or
 writable host disks. Their JSON report records display-manager startup and
 successful root-guard ordering before tmpfiles. On slow hosts, increase --timeout.
+Recorded native build, image, boot and cleanup checks are in
+[docs/verification.json](docs/verification.json), including their validation scope.
 
 Each maintained code/configuration file has exactly one comment. Shell shebangs
 count as that comment. JSON data, plain text assets, Markdown and empty tracking
