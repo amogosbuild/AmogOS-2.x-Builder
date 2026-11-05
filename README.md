@@ -109,5 +109,10 @@ count as that comment. JSON data, plain text assets, Markdown and empty tracking
 files are exempt because they are not maintained code/configuration with comments.
 The validation workflow enforces the convention and rejects private deployment paths.
 
-Builder code is GPL-3.0-or-later. Project artwork and third-party assets retain
-their existing provenance and licenses; see `shared/README.md`.
+Builder code is GPL-3.0-or-later; see [LICENSE](LICENSE). Original AmogOS artwork
+is created and copyrighted by **techtimefor**, and his permission is required
+to use, copy, modify or redistribute it. This includes the AmogOS splash screen
+and all original artwork for AmogOS Notes, AmogOS App Store and AmogOS Music,
+as well as the original wallpapers and start-menu icon.
+See [ARTWORK-LICENSE.md](ARTWORK-LICENSE.md) for the artwork terms and
+[shared/README.md](shared/README.md) for shared asset information.
