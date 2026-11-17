@@ -16,7 +16,10 @@ done
 for launcher in amogosarch.appstore amogos.music amogos.notes; do
     install -Dm755 "/usr/share/applications/$launcher.desktop" "/etc/skel/Desktop/$launcher.desktop"
 done
-install -Dm644 /etc/xdg/kdeglobals /etc/skel/.config/kdeglobals
+for config in kdeglobals baloofilerc kwinrc ksmserverrc; do
+    install -Dm644 "/etc/xdg/$config" "/etc/skel/.config/$config"
+done
+test -s /usr/lib/systemd/zram-generator.conf.d/20-amogos.conf
 install -Dm644 /etc/fastfetch/config.jsonc /etc/skel/.config/fastfetch/config.jsonc
 install -d -m0755 /etc/skel/.config/amogos-arch
 printf '%s\n' '{"theme":"dark","largerText":false,"highContrast":false}' > /etc/skel/.config/amogos-arch/session.json

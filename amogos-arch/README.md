@@ -10,6 +10,9 @@ The profile includes Plasma for offline installations, linux-zen, firmware,
 Intel and AMD graphics, NVIDIA DKMS with Zen headers, Broadcom DKMS, Steam,
 AmogOS Music and Notes, and virtual-machine guest tools. During installation GNOME and LXQt are
 downloaded from signed repositories. Plasma remains available as a fallback.
+The desktop package supplies lightweight Plasma defaults and zstd compressed
+swap. The profile copies the same settings into the user skeleton for live
+and installed accounts.
 The ISO boot menu supports BIOS through Syslinux and UEFI through GRUB, with
 normal Plymouth, basic graphics and diagnostics entries.
 
