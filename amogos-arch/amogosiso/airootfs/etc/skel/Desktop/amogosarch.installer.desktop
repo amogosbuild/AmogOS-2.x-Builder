@@ -1,0 +1,7 @@
+# Open the Arch installer from the live desktop.
+[Desktop Entry]
+Type=Application
+Name=Install AmogOS 2 Pro (Arch)
+Exec=amogos-arch-installer
+Icon=amogosarch.installer
+Terminal=false

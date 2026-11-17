@@ -1,0 +1,8 @@
+# AmogOS Arch identity for this and installed systems.
+NAME="AmogOS"
+PRETTY_NAME="AmogOS 2 Pro (Arch)"
+ID=amogos
+ID_LIKE=arch
+VERSION_ID="2.0"
+VERSION="2.0 (Arch)"
+HOME_URL="https://github.com/amogosbuild"

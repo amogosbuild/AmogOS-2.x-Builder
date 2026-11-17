@@ -1,0 +1,14 @@
+# Provision the unprivileged live user before starting SDDM.
+[Unit]
+Description=Prepare the AmogOS Arch live desktop
+ConditionKernelCommandLine=archisobasedir=amogos
+Before=display-manager.service sddm.service
+After=systemd-tmpfiles-setup.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/amogos-arch/live-session
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

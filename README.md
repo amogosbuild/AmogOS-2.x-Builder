@@ -5,7 +5,7 @@ Debian bootstrap and the configuration in this repository. There is no dependenc
 on a private server, pre-existing root filesystem or earlier ISO.
 
 - `amogos-debian/`: Debian package lists, source lock, container, boot menu and edition overlay.
-- `amogos-arch/`: intentionally empty, reserved for the future Arch edition.
+- `amogos-arch/`: Archiso profile for AmogOS 2 Pro (Arch), with linux-zen and an offline Plasma desktop.
 - `shared/`: numbered wallpapers, desktop profile, menu icon and Fastfetch configuration.
 - `builder/`: separate modules for bootstrap, packages, drivers, configuration, mounting and ISO assembly.
 - `tests/`: filesystem-boundary and input validation checks.
@@ -81,6 +81,11 @@ package lists deliberately when updating the distribution.
 Build-only APT preferences keep the locked AmogOS versions fixed while Debian
 packages receive a full upgrade. Those preferences are removed before packing,
 so installed systems continue receiving normal AmogOS updates.
+
+## Build the Arch edition
+
+Use an x86_64 Arch build host and run sudo ./build.sh amogos-arch.
+See the [Arch build and package instructions](amogos-arch/README.md).
 
 ## Development checks
 

@@ -20,7 +20,7 @@ def check(repository):
         if path.suffix=='.py':
             ast.parse(source,filename=str(relative))
             count=sum(item.type==tokenize.COMMENT for item in tokenize.generate_tokens(io.StringIO(source).readline))
-        elif path.suffix in ('.js','.jsonc'):
+        elif path.suffix in ('.js','.jsonc') or 'polkit-1' in path.parts:
             count=len(re.findall(r'(?m)^\s*//',source))
         else:
             count=len(re.findall(r'(?m)^\s*#',source))
@@ -43,6 +43,20 @@ def check(repository):
     for number in range(9):
         if not (repository/'shared/overlay/usr/share/wallpapers/AmogOSEngine'/('img'+str(number)+'.png')).is_file():
             raise RuntimeError('A numbered wallpaper is missing.')
-    if sorted(path.name for path in (repository/'amogos-arch').iterdir())!=['.gitkeep']:
-        raise RuntimeError('The reserved Arch folder must remain empty.')
-    print(json.dumps(dict(passed=True,maintainedFiles=total,edition='amogos-debian',arch='reserved',sourceRevision=lock['commit']),indent=2))
+    arch=repository/'amogos-arch/amogosiso'
+    arch_packages={line.strip() for line in (arch/'packages.x86_64').read_text().splitlines()
+                   if line.strip() and not line.startswith('#')}
+    required={'linux-zen','linux-zen-headers','amogos-arch-store','amogos-arch-installer',
+              'amogos-arch-onboarding','amogos-arch-system','nvidia-open-dkms','steam'}
+    forbidden={'linux','amogos-music','amogos-notes','amogos-store','amogos-installer'}
+    if required-arch_packages or arch_packages&forbidden:
+        raise RuntimeError('Unexpected packages in the Arch image.')
+    for config in ('pacman.conf','airootfs/etc/pacman.conf'):
+        text=(arch/config).read_text()
+        if '[amogos-arch]' not in text or '[chaotic-aur]' not in text or 'SigLevel = Never' in text:
+            raise RuntimeError('Arch package signing or repository configuration is invalid.')
+    for name in ('grub/grub.cfg','grub/loopback.cfg','syslinux/syslinux-linux.cfg'):
+        text=(arch/name).read_text()
+        if 'AmogOS 2 Pro (Arch)' not in text or 'vmlinuz-linux-zen' not in text or 'initramfs-linux-zen.img' not in text:
+            raise RuntimeError('The Arch boot menu must use the Zen kernel and Arch branding.')
+    print(json.dumps(dict(passed=True,maintainedFiles=total,editions=['amogos-debian','amogos-arch'],sourceRevision=lock['commit']),indent=2))

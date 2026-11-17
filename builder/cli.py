@@ -1,4 +1,4 @@
-# Dispatch isolated Debian builds and keep the reserved Arch edition unavailable until implemented.
+# Dispatch the native Debian builder and validate both editions.
 import argparse
 import datetime
 import json

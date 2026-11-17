@@ -1,0 +1,7 @@
+// The active live account may invoke the fixed installer, which independently checks live media.
+polkit.addRule(function(action, subject) {
+    if (action.id === "amogosarch.installer.manage" &&
+        subject.local && subject.active && subject.user === "amogos-live") {
+        return polkit.Result.YES;
+    }
+});
