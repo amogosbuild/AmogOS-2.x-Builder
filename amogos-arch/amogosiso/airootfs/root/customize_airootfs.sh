@@ -13,6 +13,13 @@ for index in /var/lib/pacman/sync/*.db /var/lib/pacman/sync/*.db.sig; do
     [ -f "$index" ] || continue
     install -m0644 "$index" /usr/share/amogos-arch/pacman-sync/
 done
+for launcher in amogosarch.appstore amogos.music amogos.notes; do
+    install -Dm755 "/usr/share/applications/$launcher.desktop" "/etc/skel/Desktop/$launcher.desktop"
+done
+install -Dm644 /etc/xdg/kdeglobals /etc/skel/.config/kdeglobals
+install -Dm644 /etc/fastfetch/config.jsonc /etc/skel/.config/fastfetch/config.jsonc
+install -d -m0755 /etc/skel/.config/amogos-arch
+printf '%s\n' '{"theme":"dark","largerText":false,"highContrast":false}' > /etc/skel/.config/amogos-arch/session.json
 systemctl enable NetworkManager amogos-arch-catalog sddm amogos-arch-live amogos-arch-onboarding-finish systemd-timesyncd
 systemctl set-default graphical.target
 mkinitcpio -p linux-zen
