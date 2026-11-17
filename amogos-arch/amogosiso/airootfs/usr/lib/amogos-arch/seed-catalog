@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+source=/usr/share/amogos-arch/pacman-sync
+target=/var/lib/pacman/sync
+install -d -m0755 "$target"
+for index in "$source"/*.db; do
+    [ -f "$index" ] || continue
+    name=$(basename "$index")
+    [ ! -e "$target/$name" ] || continue
+    install -m0644 "$index" "$target/$name"
+    if [ -f "$index.sig" ]; then
+        install -m0644 "$index.sig" "$target/$name.sig"
+    fi
+done

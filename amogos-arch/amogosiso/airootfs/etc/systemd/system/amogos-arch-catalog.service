@@ -1,0 +1,14 @@
+# Seed the store's Pacman catalog from the signed repositories used at build time.
+[Unit]
+Description=Prepare the AmogOS Arch package catalog
+ConditionDirectoryNotEmpty=/usr/share/amogos-arch/pacman-sync
+After=local-fs.target
+Before=display-manager.service sddm.service amogos-arch-live.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/amogos-arch/seed-catalog
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
