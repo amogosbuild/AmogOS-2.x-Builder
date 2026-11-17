@@ -7,8 +7,8 @@ archiso, grub, dosfstools, python and curl installed.
     sudo ./build.sh amogos-arch
 
 The profile includes Plasma for offline installations, linux-zen, firmware,
-Intel and AMD graphics, NVIDIA DKMS with Zen headers, Broadcom DKMS, Steam
-and virtual-machine guest tools. During installation GNOME and LXQt are
+Intel and AMD graphics, NVIDIA DKMS with Zen headers, Broadcom DKMS, Steam,
+AmogOS Music and Notes, and virtual-machine guest tools. During installation GNOME and LXQt are
 downloaded from signed repositories. Plasma remains available as a fallback.
 The ISO boot menu supports BIOS through Syslinux and UEFI through GRUB, with
 normal Plymouth, basic graphics and diagnostics entries.

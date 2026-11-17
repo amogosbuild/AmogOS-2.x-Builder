@@ -47,8 +47,9 @@ def check(repository):
     arch_packages={line.strip() for line in (arch/'packages.x86_64').read_text().splitlines()
                    if line.strip() and not line.startswith('#')}
     required={'linux-zen','linux-zen-headers','amogos-arch-store','amogos-arch-installer',
-              'amogos-arch-onboarding','amogos-arch-system','nvidia-open-dkms','steam'}
-    forbidden={'linux','amogos-music','amogos-notes','amogos-store','amogos-installer'}
+              'amogos-arch-onboarding','amogos-arch-system','amogos-music','amogos-notes',
+              'nvidia-open-dkms','steam'}
+    forbidden={'linux','amogos-store','amogos-installer'}
     if required-arch_packages or arch_packages&forbidden:
         raise RuntimeError('Unexpected packages in the Arch image.')
     for config in ('pacman.conf','airootfs/etc/pacman.conf'):
