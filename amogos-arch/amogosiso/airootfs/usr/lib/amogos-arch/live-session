@@ -1,6 +1,7 @@
 #!/bin/sh
 set -eu
-pacman-key --init\npacman-key --populate archlinux chaotic amogos-arch
+pacman-key --init
+pacman-key --populate archlinux chaotic amogos-arch
 getent passwd amogos-live >/dev/null || useradd --create-home --shell /bin/bash --comment 'AmogOS Live' amogos-live
 install -d /etc/sddm.conf.d
 cat > /etc/sddm.conf.d/20-amogos-live.conf <<'CONF'
