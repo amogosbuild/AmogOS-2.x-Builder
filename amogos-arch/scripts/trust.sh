@@ -17,10 +17,17 @@ for input in "$scratch/chaotic.asc:$chaotic_fingerprint" "$amogos_key:$amogos_fi
     pacman-key --lsign-key "$expected"
 done
 for package in chaotic-keyring chaotic-mirrorlist; do
-    source="https://cdn-mirror.chaotic.cx/chaotic-aur/$package.pkg.tar.zst"
-    curl -fLsS --retry 2 "$source" -o "$scratch/$package.pkg.tar.zst"
-    curl -fLsS --retry 2 "$source.sig" -o "$scratch/$package.pkg.tar.zst.sig"
-    pacman-key --verify "$scratch/$package.pkg.tar.zst.sig" "$scratch/$package.pkg.tar.zst"
+    verified=false
+    for mirror in https://geo-mirror.chaotic.cx https://cdn-mirror.chaotic.cx; do
+        source="$mirror/chaotic-aur/$package.pkg.tar.zst"
+        if curl -fLsS --retry 2 --connect-timeout 15 --max-time 120 "$source" -o "$scratch/$package.pkg.tar.zst" && \
+           curl -fLsS --retry 2 --connect-timeout 15 --max-time 120 "$source.sig" -o "$scratch/$package.pkg.tar.zst.sig" && \
+           pacman-key --verify "$scratch/$package.pkg.tar.zst.sig" "$scratch/$package.pkg.tar.zst"; then
+            verified=true
+            break
+        fi
+    done
+    test "$verified" = true || { echo "No signed Chaotic mirror supplied $package." >&2; exit 1; }
 done
 pacman -U --needed --noconfirm -- "$scratch/chaotic-keyring.pkg.tar.zst" "$scratch/chaotic-mirrorlist.pkg.tar.zst"
 pacman-key --populate chaotic
